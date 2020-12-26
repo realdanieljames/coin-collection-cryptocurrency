@@ -1,0 +1,23 @@
+.App {
+    background-color: rgb(237, 121, 79);
+    /* display: grid; */
+    /* grid-template-rows: 20% 20% 20% 20% 20%; */
+    /* display: grid; */
+    /* grid-template-rows: 30% 70%; */
+    /* grid-template-columns: 100%; */
+}
+
+.header {
+    background-color: rgb(237, 121, 79);
+    height: 218px;
+}
+
+.header__logo {
+    /* display: grid; */
+    width: 300px;
+    margin-top: 0;
+    padding: 90px 100px 30px 90px;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+}

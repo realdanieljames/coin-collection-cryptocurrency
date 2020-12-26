@@ -1,0 +1,15 @@
+.coin__collection {
+    display: grid;
+    padding: 100px;
+}
+
+.coin__info {
+    /* background-color: black; */
+}
+
+.coin__name {
+    height: 227px;
+    width: 157px;
+    margin: 1%;
+    border-radius: 25px;
+}
