@@ -1,4 +1,4 @@
-import CmcAPIData from './cmcData'
+import CoinGeckoApi from './coinGeckoData'
 import './App.css';
 
 
@@ -15,7 +15,7 @@ function App() {
       </div>
 
       <div className="coin__collection">
-        <CmcAPIData />
+        <CoinGeckoApi />
       </div>
 
     
