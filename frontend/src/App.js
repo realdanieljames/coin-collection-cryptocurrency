@@ -1,20 +1,22 @@
-import CoinGeckoApi from './coinGeckoData'
+
+import CoinGeckoApi from './coinGeckoAPI/coinGeckoData'
+import Search from './search/Search'
 import './App.css';
 
 
-function App() {
-// console.log(MessariAPIData())
 
+function App() {
 
   return (
     <div className="App">
 
 
       <div className="header">
-        <p className='header__logo'> COIN COLLECTION <br/>CRYPTOCURRENCY</p> 
+        <p className='header__logo'> COIN-CARD COLLECTION <br/>CRYPTOCURRENCY</p> 
+        <Search/>
       </div>
 
-      <div className="coin__collection">
+      <div>
         <CoinGeckoApi />
       </div>
 
