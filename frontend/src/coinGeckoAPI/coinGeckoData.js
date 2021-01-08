@@ -55,7 +55,7 @@ const currencyObj = {
                     key={coinInfo.id} 
                     className="coin__card"        
                 >
-                    <div className="card__rank">Rank: #{coinInfo.market_data.market_cap_rank} {<br/>}({coinInfo.symbol}) </div>
+                    <div className="card__rank">Rank: #{coinInfo.market_data.market_cap_rank} {<br/>}( {coinInfo.symbol.toUpperCase()} ) </div>
                     <div className="card__marketcap">{coinInfo.market_data.market_cap.usd.toLocaleString("en-US",currencyObj)}</div>
                     <img className="card__image" src={coinInfo.image.large} alt={coinInfo.name}/>
                     <div className="card__name">{coinInfo.name}</div>
