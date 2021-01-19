@@ -7,20 +7,20 @@ import './App.css';
 
 function App() {
 
+
   return (
     <div className="App">
-
-
       <div className="header">
         <p className='header__logo'> COIN-CARD COLLECTION <br/>CRYPTOCURRENCY</p> 
         <Search/>
       </div>
 
       <div>
-        <CoinGeckoApi />
+        {/* <CoinGeckoApi /> */}
       </div>
 
-    
+
+
     </div>
   );
 }

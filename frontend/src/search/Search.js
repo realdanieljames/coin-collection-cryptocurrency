@@ -1,43 +1,110 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import CoinGeckoApi from '../coinGeckoAPI/coinGeckoData'
+const CoinGecko = require('coingecko-api');
+
+//2. Initiate the CoinGecko API Client
+const CoinGeckoClient = new CoinGecko();
 
 
 
-console.log(CoinGeckoApi)
-const Search = ({func}) => {
+// func()
+const Search = () => {
     const [searchValue, setSearchValue] = useState('')
+    const[coinResults, setCoinResults] = useState([])
 
 
-  const handleSearchInput = (inputValue)=>{
-
-    // if()
-    console.log(inputValue)
-
-    setSearchValue(inputValue)
-  }
-  
-
-  const handleSearchButton =(e)=>{
-    console.log(e.target.value)
-  }
+    const handleSearchInput = async (inputValue)=>{
+      setSearchValue(inputValue)
+      let data =  await CoinGeckoClient.coins.all();
+      setCoinResults(data.data)
+    }
 
     return (
-
-        <div className="search__element">
+      <div className="search__element">
             <input 
                 className="search__input"
                 type="text"
                 placeholder="Search cryptocurrencies"
                 value={searchValue}
                 onChange={(e)=> handleSearchInput(e.target.value)}
-            />
+                />
             <button 
               className="search__button"
-              onClick={handleSearchButton}
+              // onClick={handleSearchButton}
               >Search
-            </button>
-        </div> 
+            </button>     
+            </div>
     )
-}
+
+        
+    }
+
+    
+
+         const searchIdentifiers =  
+        <div className="coin__info">
+
+        {coinResults.filter(coinInfo =>
+          coinInfo.id.includes(searchValue) || coinInfo.symbol.includes(searchValue)).map(filteredCoin=>(
+            <div 
+            key={filteredCoin.id} 
+            className="coin__card"        
+        >
+            <div className="card__rank">Rank: #{filteredCoin.market_data.market_cap_rank} {<br/>}( {filteredCoin.symbol.toUpperCase()} ) </div>
+            {/* <div className="card__marketcap">{filteredCoin.market_data.market_cap.usd.toLocaleString("en-US",currencyObj)}</div> */}
+            <img className="card__image" src={filteredCoin.image.large} alt={filteredCoin.name}/>
+            <div className="card__name">{filteredCoin.name}</div>
+            <div className="card__price"> ${filteredCoin.market_data.current_price.usd}</div>
+        </div>
+          ))
+         
+        }
+          </div>
+
+
+
+  
+
+  const handleSearchButton =(e)=>{
+    console.log(searchValue)
+
+
+  }
+
+    return (
+
+
+        // <div className="search__element">
+        //     <input 
+        //         className="search__input"
+        //         type="text"
+        //         placeholder="Search cryptocurrencies"
+        //         value={searchValue}
+        //         onChange={(e)=> handleSearchInput(e.target.value)}
+        //         />
+        //     <button 
+        //       className="search__button"
+        //       onClick={handleSearchButton}
+        //       >Search
+        //     </button>     
+
+
+            <div className="coin__info">
+            {searchValue.length === 0? 
+                  <div>
+                    <CoinGeckoApi/>
+                  </div> 
+                  :
+                  <div>
+                    {searchIdentifiers}
+                  </div>
+          }
+          </div>
+  
+        // </div> 
+        
+      
+    )
+    }
 
 export default Search;
