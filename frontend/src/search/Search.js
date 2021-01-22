@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react'
+import './Search.css'
 import CoinGeckoApi from '../coinGeckoAPI/coinGeckoData'
+import SearchResults from './SearchResults'
 const CoinGecko = require('coingecko-api');
 
 //2. Initiate the CoinGecko API Client
@@ -19,33 +21,51 @@ const Search = () => {
       setCoinResults(data.data)
     }
 
-    return (
-      <div className="search__element">
-            <input 
-                className="search__input"
-                type="text"
-                placeholder="Search cryptocurrencies"
-                value={searchValue}
-                onChange={(e)=> handleSearchInput(e.target.value)}
-                />
-            <button 
-              className="search__button"
-              // onClick={handleSearchButton}
-              >Search
-            </button>     
-            </div>
-    )
+    // return (
+    //   <div className="search__element">
+    //         <input 
+    //             className="search__input"
+    //             type="text"
+    //             placeholder="Search cryptocurrencies"
+    //             value={searchValue}
+    //             onChange={(e)=> handleSearchInput(e.target.value)}
+    //             />
+    //         <button 
+    //           className="search__button"
+    //           // onClick={handleSearchButton}
+    //           >Search
+          
+    //         </button>     
+    //         <SearchResults handleSearchInput={handleSearchInput}/>
+    //         </div>
+    // )
 
         
-    }
+    // }
+      const searchBar = 
+      <div className="search__element">
+      <input 
+          className="search__input"
+          type="text"
+          placeholder="Search cryptocurrencies"
+          value={searchValue}
+          onChange={(e)=> handleSearchInput(e.target.value)}
+          />
+      <button 
+        className="search__button"
+        // onClick={handleSearchButton}
+        >Search
+      </button>    
+      </div>
 
     
 
-         const searchIdentifiers =  
+        const searchIdentifiers =  
         <div className="coin__info">
 
         {coinResults.filter(coinInfo =>
-          coinInfo.id.includes(searchValue) || coinInfo.symbol.includes(searchValue)).map(filteredCoin=>(
+          coinInfo.id.includes(searchValue) ||  coinInfo.id.toUpperCase().includes(searchValue)
+          || coinInfo.symbol.includes(searchValue) || coinInfo.symbol.toUpperCase().includes(searchValue)).map(filteredCoin=>(
             <div 
             key={filteredCoin.id} 
             className="coin__card"        
@@ -56,25 +76,27 @@ const Search = () => {
             <div className="card__name">{filteredCoin.name}</div>
             <div className="card__price"> ${filteredCoin.market_data.current_price.usd}</div>
         </div>
+
+
           ))
-         
+        
         }
           </div>
+          
 
 
 
   
 
-  const handleSearchButton =(e)=>{
-    console.log(searchValue)
+  // const handleSearchButton =(e)=>{
+  //   console.log(searchValue)
 
 
-  }
+  // }
 
     return (
 
-
-        // <div className="search__element">
+        //<div className="search__element"> */}
         //     <input 
         //         className="search__input"
         //         type="text"
@@ -87,9 +109,10 @@ const Search = () => {
         //       onClick={handleSearchButton}
         //       >Search
         //     </button>     
+        <div>
+          {searchBar}
 
-
-            <div className="coin__info">
+            {/* <div className="coin__info"> */}
             {searchValue.length === 0? 
                   <div>
                     <CoinGeckoApi/>
@@ -101,8 +124,8 @@ const Search = () => {
           }
           </div>
   
-        // </div> 
-        
+      // </div>  
+
       
     )
     }
