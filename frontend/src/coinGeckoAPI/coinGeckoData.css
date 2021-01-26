@@ -1,13 +1,15 @@
 .coin__info {
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20% 20%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     /* grid-template-columns: 17% 17% 17% 17% 17% 17%; */
-    grid-template-rows: 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7%;
-    /* grid-template-rows: auto; */
+    /* grid-template-rows: 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7%; */
+    grid-template-rows: auto;
     padding-left: 80px;
     /* padding-right: 80px; */
     width: 70%;
+    height: 100%;
     margin-top: 50px;
+    /* margin-right: 50px; */
 }
 
 .coin__card {
@@ -15,10 +17,10 @@
     display: grid;
     grid-template-columns: 3% 97%;
     grid-template-rows: 18% 18% 25% 18% 18% 18%;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     /* margin: 30px; */
-    margin-bottom: 6px;
+    margin: 10px;
     /* margin-right: 100px; */
     border-radius: 15px;
     background-color: white;
@@ -57,15 +59,15 @@
     justify-self: center;
     height: 40px;
     animation-name: spin3D;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-iteration-count: 20;
     /* linear | ease | ease-in | ease-out | ease-in-out */
     animation-timing-function: linear;
 }
 
 .card__name {
-    align-self: end;
-    /* justify-self: center; */
+    /* align-self: end; */
+    justify-self: center;
     grid-column: 2/3;
     grid-row: 4/5;
     font-weight: bold;
@@ -77,17 +79,27 @@
     grid-row: 5/6;
 }
 
+.current__price {
+    grid-column: 2/3;
+    grid-row: 5/6;
+}
+
 .card__price {
     grid-column: 2/3;
     grid-row: 5/6;
-    color: rgb(52, 123, 7);
+    /* color: rgb(52, 123, 7); */
+    color: black;
     font-weight: bold;
-    align-self: end;
-    justify-self: center;
-    border: 2px solid black;
+    /* align-self: end; */
+    justify-self: end;
+    border: 2px solid gold;
     background-color: gold;
-    border-radius: 10px;
-    padding: 5px;
+    /* border-radius: 12px; */
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 5px;
+    height: 30px;
+    padding: 3px;
 }
 
 @media (max-width: 800px) {
@@ -109,5 +121,71 @@
     }
     .coin__card {
         margin: 6px;
+    }
+}
+
+.loader,
+.loader:before,
+.loader:after {
+    background: #ffff00;
+    -webkit-animation: load1 1s infinite ease-in-out;
+    animation: load1 1s infinite ease-in-out;
+    width: 1em;
+    height: 4em;
+}
+
+.loader {
+    color: #ffff00;
+    text-indent: -9999em;
+    margin: 88px auto;
+    position: relative;
+    font-size: 11px;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+    position: absolute;
+    top: 0;
+    content: '';
+}
+
+.loader:before {
+    left: -1.5em;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.loader:after {
+    left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0;
+        height: 4em;
+    }
+    40% {
+        box-shadow: 0 -2em;
+        height: 5em;
+    }
+}
+
+@keyframes load1 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0;
+        height: 4em;
+    }
+    40% {
+        box-shadow: 0 -2em;
+        height: 5em;
     }
 }

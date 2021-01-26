@@ -10,15 +10,16 @@ const CoinGeckoClient = new CoinGecko();
 
 
 // func()
-const Search = () => {
-    const [searchValue, setSearchValue] = useState('')
-    const[coinResults, setCoinResults] = useState([])
+const Search = ({coinResults, loading, searchValue, setSearchValue, setCoinResults}) => {
+    // const [searchValue, setSearchValue] = useState('')
+    // const[coinResults, setCoinResults] = useState([])
 
 
     const handleSearchInput = async (inputValue)=>{
       setSearchValue(inputValue)
-      let data =  await CoinGeckoClient.coins.all();
-      setCoinResults(data.data)
+      // let data =  await CoinGeckoClient.coins.all();
+      let allCoins = await CoinGeckoClient.coins.list();
+      setCoinResults(allCoins.data)
     }
 
     // return (
@@ -65,7 +66,9 @@ const Search = () => {
 
         {coinResults.filter(coinInfo =>
           coinInfo.id.includes(searchValue) ||  coinInfo.id.toUpperCase().includes(searchValue)
-          || coinInfo.symbol.includes(searchValue) || coinInfo.symbol.toUpperCase().includes(searchValue)).map(filteredCoin=>(
+          || coinInfo.symbol.includes(searchValue) || coinInfo.symbol.toUpperCase().includes(searchValue)
+          || coinInfo.name.includes(searchValue) || coinInfo.name.toUpperCase().includes(searchValue))
+          .map(filteredCoin=>(
             <div 
             key={filteredCoin.id} 
             className="coin__card"        

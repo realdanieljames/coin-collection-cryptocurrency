@@ -1,15 +1,57 @@
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import CoinGeckoApi from './coinGeckoAPI/coinGeckoData'
 import Search from './search/Search'
+import PageNumbers from './pageNumbers/PageNumbers';
+
 import './App.css';
-import SearchResults from './search/SearchResults';
+const CoinGecko = require('coingecko-api');
+
+
+
+
+//=============================================================================================================//
+//=============================================================================================================//
+const CoinGeckoClient = new CoinGecko();
 
 
 
 function App() {
 
+  const [loading, setLoading] = useState(false);
+  const [coinResults, setCoinResults] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const [pageNumber, setPageNumber] = useState(1);
+  const [coinsPerPage, setCoinsPerPage] = useState(100)
 
+
+
+//=============================================================================================================//
+//=============================================================================================================//
+useEffect(()=>{
+  const getCryptoData = async() => {
+    setLoading(true);
+    let data = await CoinGeckoClient.coins.all({'per_page': coinsPerPage, page: pageNumber});
+    let allCoins = await CoinGeckoClient.coins.list();
+    console.log(allCoins)
+    setCoinResults(data.data)
+    // setCoinResults(allCoins.data)
+    setLoading(false)
+
+  };
+  getCryptoData()
+}, [])  
+// console.log(coinResults)
+console.log(coinResults)
+
+
+
+
+//=============================================================================================================//
+//=============================================================================================================//
+
+//=============================================================================================================//
+//=============================================================================================================//
 
   return (
     <div className="App">
@@ -18,9 +60,17 @@ function App() {
       </div>
 
 
-        <Search />
+        <div>
+
+
+        {/* <Search  coinResults={coinResults} setCoinResults={setCoinResults} loading={loading} searchValue={searchValue} setSearchValue={setSearchValue}/> */}
+        </div>
+<div>
+
+</div>
+        <CoinGeckoApi coinResults={coinResults} loading={loading} />
         {/* <SearchResults /> */}
-        {/* <CoinGeckoApi /> */}
+        <PageNumbers pageNumber={pageNumber}/>
 
 
 
