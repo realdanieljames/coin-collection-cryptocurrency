@@ -16,7 +16,7 @@ const CoinGeckoApi = ({coinResults, loading}) => {
     const currencyObj = {
         style: "currency",
         currency: "usd",
-        currencyDisplay: 'code'
+        // currencyDisplay: 'code'
     }
     
     
@@ -41,11 +41,12 @@ const CoinGeckoApi = ({coinResults, loading}) => {
                     className="coin__card"        
                 >
                     <div className="card__rank">Rank: #{coinInfo.market_data.market_cap_rank} {<br/>} ( {coinInfo.symbol.toUpperCase()} ) </div>
-                    <div className="card__marketcap">MCap: {coinInfo.market_data.market_cap.usd.toLocaleString("en-US",currencyObj)}</div>
+                    <div className="card__marketcap">MCap: {coinInfo.market_data.market_cap.usd.toLocaleString()}</div>
+                    {/* <div className="card__marketcap">MCap: {coinInfo.market_data.market_cap.usd.toLocaleString("en-US",currencyObj)}</div> */}
                     <img className="card__image" src={coinInfo.image.large} alt={coinInfo.name}/>
                     <div className="card__name">{coinInfo.name}</div>
                     <div className="current__price">  Price</div>
-                    <div className="card__price">$ {coinInfo.market_data.current_price.usd}</div>
+                    <div className="card__price">{coinInfo.market_data.current_price.usd.toLocaleString("en-US",currencyObj)}</div>
                 </div>
                 
 

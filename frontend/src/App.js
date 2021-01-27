@@ -2,7 +2,7 @@
 import {useState, useEffect} from 'react'
 import CoinGeckoApi from './coinGeckoAPI/coinGeckoData'
 import Search from './search/Search'
-import PageNumbers from './pageNumbers/PageNumbers';
+import Pagination from './pagination/Pagination';
 
 import './App.css';
 const CoinGecko = require('coingecko-api');
@@ -23,33 +23,52 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [coinsPerPage, setCoinsPerPage] = useState(100)
+  const [allCoinResults, setAllCoinResults] = useState([])
 
 
 
 //=============================================================================================================//
 //=============================================================================================================//
 useEffect(()=>{
-  const getCryptoData = async() => {
-    setLoading(true);
-    let data = await CoinGeckoClient.coins.all({'per_page': coinsPerPage, page: pageNumber});
-    let allCoins = await CoinGeckoClient.coins.list();
-    console.log(allCoins)
-    setCoinResults(data.data)
-    // setCoinResults(allCoins.data)
-    setLoading(false)
 
-  };
   getCryptoData()
+  // paginate()
+
 }, [])  
-// console.log(coinResults)
+
 console.log(coinResults)
 
+const getCryptoData = async() => {
+  setLoading(true);
+  let data = await CoinGeckoClient.coins.all({'per_page': coinsPerPage, page: pageNumber});
+  let allCoins = await CoinGeckoClient.coins.list()
+  // console.log(allCoins)
+  setCoinResults(data.data)
+  setAllCoinResults(allCoins.data)
+  setLoading(false)
 
+};
 
 
 //=============================================================================================================//
 //=============================================================================================================//
+//get current posts per page
+// const indexOfLastPost = pageNumber *  coinsPerPage;
+// const indexOfFirstPost = indexOfLastPost -  coinsPerPage;
+// const currentCoins = coinResults.slice(indexOfFirstPost,indexOfLastPost)
 
+
+//Change page
+const paginate = async (pageNumber)=>{
+  setLoading(true);
+  let data = await CoinGeckoClient.coins.all({'per_page': coinsPerPage, page: pageNumber});
+  setCoinResults(data.data)
+
+console.log(pageNumber)
+  setPageNumber(pageNumber)
+  setLoading(false)
+
+}
 //=============================================================================================================//
 //=============================================================================================================//
 
@@ -69,8 +88,14 @@ console.log(coinResults)
 
 </div>
         <CoinGeckoApi coinResults={coinResults} loading={loading} />
+        {/* <CoinGeckoApi coinResults={currentCoins} loading={loading} /> */}
         {/* <SearchResults /> */}
-        <PageNumbers pageNumber={pageNumber}/>
+        <Pagination 
+          coinsPerPage={coinsPerPage} 
+          totalCoins={allCoinResults.length} 
+          paginate={paginate}
+          pageNumber={pageNumber}
+        />
 
 
 
