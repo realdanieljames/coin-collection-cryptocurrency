@@ -23,7 +23,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [coinsPerPage, setCoinsPerPage] = useState(100)
-  const [allCoinResults, setAllCoinResults] = useState([])
+  const [allCoinINS, setAllCoinResults] = useState([])
 
 
 
@@ -32,7 +32,7 @@ function App() {
 useEffect(()=>{
 
   getCryptoData()
-  // paginate()
+
 
 }, [])  
 
@@ -41,10 +41,10 @@ console.log(coinResults)
 const getCryptoData = async() => {
   setLoading(true);
   let data = await CoinGeckoClient.coins.all({'per_page': coinsPerPage, page: pageNumber});
-  let allCoins = await CoinGeckoClient.coins.list()
-  // console.log(allCoins)
+  let allCoinsINS = await CoinGeckoClient.coins.list()
+  // console.log(allCoinsINS)
   setCoinResults(data.data)
-  setAllCoinResults(allCoins.data)
+  setAllCoinResults(allCoinsINS.data)
   setLoading(false)
 
 };
@@ -76,14 +76,15 @@ console.log(pageNumber)
     <div className="App">
       <div className="header">
         <p className='header__logo'> COIN-CARD COLLECTION <br/>CRYPTOCURRENCY</p> 
+        <Search setSearchValue={setSearchValue}  allCoinINS={allCoinINS}/> 
       </div>
 
 
-        <div>
+        {/* <div> */}
 
 
         {/* <Search  coinResults={coinResults} setCoinResults={setCoinResults} loading={loading} searchValue={searchValue} setSearchValue={setSearchValue}/> */}
-        </div>
+        {/* </div> */}
 <div>
 
 </div>
@@ -92,7 +93,7 @@ console.log(pageNumber)
         {/* <SearchResults /> */}
         <Pagination 
           coinsPerPage={coinsPerPage} 
-          totalCoins={allCoinResults.length} 
+          totalCoins={allCoinINS.length} 
           paginate={paginate}
           pageNumber={pageNumber}
         />

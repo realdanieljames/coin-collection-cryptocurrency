@@ -1,191 +1,202 @@
-.coin__info {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    /* grid-template-columns: 17% 17% 17% 17% 17% 17%; */
-    /* grid-template-rows: 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7%; */
-    grid-template-rows: auto;
-    padding-left: 80px;
-    /* padding-right: 80px; */
-    width: 70%;
-    height: 100%;
-    margin-top: 50px;
-    /* margin-right: 50px; */
-}
-
-.coin__card {
-    /* background-color: white; */
-    display: grid;
-    grid-template-columns: 3% 97%;
-    grid-template-rows: 18% 18% 25% 18% 18% 18%;
-    width: 200px;
-    height: 200px;
-    /* margin: 30px; */
-    margin: 10px;
-    /* margin-right: 100px; */
-    border-radius: 15px;
-    background-color: white;
-    border: 7px double black
-}
-
-.card__rank {
-    grid-column: 1/3;
-    grid-row: 1/2;
-    background-color: rgb(27, 159, 27);
-    /* width: 100%; */
-    color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    font-weight: bold;
-    /* margin-left: 30px; */
-}
-
-.card__marketcap {
-    grid-column: 2/3;
-    grid-row: 2/3;
-}
-
-@keyframes spin3D {
-    from {
-        transform: rotateY(0deg)
-    }
-    to {
-        transform: rotateY(360deg)
-    }
-}
-
-.card__image {
-    grid-column: 2/3;
-    grid-row: 3/4;
-    justify-self: center;
-    height: 40px;
-    animation-name: spin3D;
-    animation-duration: 1s;
-    animation-iteration-count: 20;
-    /* linear | ease | ease-in | ease-out | ease-in-out */
-    animation-timing-function: linear;
-}
-
-.card__name {
-    /* align-self: end; */
-    justify-self: center;
-    grid-column: 2/3;
-    grid-row: 4/5;
-    font-weight: bold;
-}
-
-.card__symbol {
-    justify-self: center;
-    grid-column: 2/3;
-    grid-row: 5/6;
-}
-
-.current__price {
-    grid-column: 2/3;
-    grid-row: 5/6;
-}
-
-.card__price {
-    grid-column: 2/3;
-    grid-row: 5/6;
-    /* color: rgb(52, 123, 7); */
-    color: black;
-    font-weight: bold;
-    /* align-self: end; */
-    justify-self: end;
-    border: 2px solid gold;
-    background-color: gold;
-    /* border-radius: 12px; */
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 5px;
-    height: 30px;
-    padding: 3px;
-}
-
-@media (max-width: 800px) {
-    .coin__info {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-    }
-    .coin__card {
-        margin: 6px;
-    }
-}
-
-@media (min-width: 801px) and (max-width: 1099px) {
     .coin__info {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        /* grid-template-columns: 17% 17% 17% 17% 17% 17%; */
+        /* grid-template-rows: 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7%; */
         grid-template-rows: auto;
+        padding-left: 80px;
+        /* padding-right: 80px; */
+        width: 70%;
+        height: 100%;
+        margin-top: 50px;
+        /* margin-right: 50px; */
     }
+    
     .coin__card {
-        margin: 6px;
+        /* background-color: white; */
+        display: grid;
+        grid-template-columns: 3% 97%;
+        grid-template-rows: 14% 10% 12% 23% 10% 18% 18%;
+        width: 200px;
+        height: 280px;
+        /* margin: 30px; */
+        margin: 10px;
+        /* margin-right: 100px; */
+        border-radius: 15px;
+        background-color: white;
+        /* border: 7px double black; */
+        border: 7px outset white;
     }
-}
-
-.loader,
-.loader:before,
-.loader:after {
-    background: #ffff00;
-    -webkit-animation: load1 1s infinite ease-in-out;
-    animation: load1 1s infinite ease-in-out;
-    width: 1em;
-    height: 4em;
-}
-
-.loader {
-    color: #ffff00;
-    text-indent: -9999em;
-    margin: 88px auto;
-    position: relative;
-    font-size: 11px;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
-}
-
-.loader:before,
-.loader:after {
-    position: absolute;
-    top: 0;
-    content: '';
-}
-
-.loader:before {
-    left: -1.5em;
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
-}
-
-.loader:after {
-    left: 1.5em;
-}
-
-@-webkit-keyframes load1 {
-    0%,
-    80%,
-    100% {
-        box-shadow: 0 0;
+    
+    .card__rank {
+        grid-column: 1/3;
+        grid-row: 1/2;
+        background-color: rgb(27, 159, 27);
+        /* width: 100%; */
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        font-weight: bold;
+        border-bottom: black solid 3px;
+        /* margin-left: 30px; */
+    }
+    
+    .card__marketcap {
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+    
+    .card__circulating__supply {
+        grid-column: 2/3;
+        grid-row: 3/4;
+        border-bottom: 2px solid black;
+    }
+    
+    @keyframes spin3D {
+        from {
+            transform: rotateY(0deg)
+        }
+        to {
+            transform: rotateY(360deg)
+        }
+    }
+    
+    .card__image {
+        grid-column: 2/3;
+        grid-row: 4/5;
+        justify-self: center;
+        align-self: end;
+        height: 60px;
+        animation-name: spin3D;
+        animation-duration: 1s;
+        animation-iteration-count: 10;
+        /* linear | ease | ease-in | ease-out | ease-in-out */
+        animation-timing-function: linear;
+    }
+    
+    .card__name {
+        /* align-self: end; */
+        padding-top: 6px;
+        grid-column: 2/3;
+        grid-row: 5/6;
+        font-weight: bold;
+        justify-self: center;
+    }
+    
+    .card__symbol {
+        justify-self: center;
+        grid-column: 2/3;
+        grid-row: 6/7;
+    }
+    
+    .current__price {
+        grid-column: 2/3;
+        grid-row: 6/7;
+    }
+    
+    .card__price {
+        grid-column: 2/3;
+        grid-row: 6/7;
+        /* color: rgb(52, 123, 7); */
+        color: rgb(0, 53, 0);
+        font-weight: bold;
+        /* align-self: end; */
+        justify-self: end;
+        /* border: 6px outset gold; */
+        background-color: rgba(255, 217, 0, 0.153);
+        /* border-radius: 12px; */
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 5px;
+        height: 70px;
+        padding: 3px;
+        /* border-right: 100px; */
+    }
+    
+    @media (max-width: 800px) {
+        .coin__info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+        }
+        .coin__card {
+            margin: 6px;
+        }
+    }
+    
+    @media (min-width: 801px) and (max-width: 1099px) {
+        .coin__info {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: auto;
+        }
+        .coin__card {
+            margin: 6px;
+        }
+    }
+    
+    .loader,
+    .loader:before,
+    .loader:after {
+        background: #ffff00;
+        -webkit-animation: load1 1s infinite ease-in-out;
+        animation: load1 1s infinite ease-in-out;
+        width: 1em;
         height: 4em;
     }
-    40% {
-        box-shadow: 0 -2em;
-        height: 5em;
+    
+    .loader {
+        color: #ffff00;
+        text-indent: -9999em;
+        margin: 88px auto;
+        position: relative;
+        font-size: 11px;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
     }
-}
-
-@keyframes load1 {
-    0%,
-    80%,
-    100% {
-        box-shadow: 0 0;
-        height: 4em;
+    
+    .loader:before,
+    .loader:after {
+        position: absolute;
+        top: 0;
+        content: '';
     }
-    40% {
-        box-shadow: 0 -2em;
-        height: 5em;
+    
+    .loader:before {
+        left: -1.5em;
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
     }
-}
+    
+    .loader:after {
+        left: 1.5em;
+    }
+    
+    @-webkit-keyframes load1 {
+        0%,
+        80%,
+        100% {
+            box-shadow: 0 0;
+            height: 4em;
+        }
+        40% {
+            box-shadow: 0 -2em;
+            height: 5em;
+        }
+    }
+    
+    @keyframes load1 {
+        0%,
+        80%,
+        100% {
+            box-shadow: 0 0;
+            height: 4em;
+        }
+        40% {
+            box-shadow: 0 -2em;
+            height: 5em;
+        }
+    }
