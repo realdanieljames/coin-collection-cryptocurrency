@@ -70,26 +70,7 @@ console.log(searchValue.length)
                 <hr/> 
                 ETH: {coinInfo.market_data.current_price.eth}
                 <hr/>    
-                </div>
-                
-                
-                {/* <div className="card__rank">{"_ "}Rank: #{coinInfo.market_cap_rank} {<br/>} _<strong> ( {coinInfo.symbol.toUpperCase()} )</strong> </div>
-                <div className="card__marketcap">MCap: {coinInfo.market_cap}</div>
-                <div className="card__circulating__supply">Circulating Supply:{<br/>} {Number(coinInfo.circulating_supply).toLocaleString("en-US")} <strong> {coinInfo.symbol.toUpperCase()}</strong></div>
-                
-                <div className="card__marketcap">MCap: {coinInfo.market_cap}</div>
-                <img className="card__image" src={coinInfo.image} alt={coinInfo.name}/>
-                <div className="card__name">{coinInfo.name}</div>
-                <div className="current__price">  Price</div>
-                <div className="card__price"> USD:  {"  "}{coinInfo.current_price} 
-                <hr/> 
-                {/* BTC: ₿{coinInfo.current_price.btc} */}
-                {/* <hr/>  */}
-                {/* ETH: {coinInfo.current_price.eth} */}
-                {/* <hr/>  */}
-                
-                {/* </div>   */}
-                
+                </div>      
                 
                 
                 </div>

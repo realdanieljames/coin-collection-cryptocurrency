@@ -48,6 +48,10 @@ const symbolData = []
         
       market.data.map((value)=>{
 
+        if(value.market_cap === null){
+          return value
+        }
+
             
             let coinCard = {
               id: value.id,
@@ -127,7 +131,7 @@ const symbolData = []
             <div className="card__price"> ${filteredCoin.market_data.current_price.usd}</div> */}
 
                     <div className="card__rank">{"_ "}Rank: #{filteredCoin.market_cap_rank} {<br/>} _<strong> ( {filteredCoin.symbol.toUpperCase()} )</strong> </div>
-                    <div className="card__marketcap">MCap: {filteredCoin.market_cap}</div>
+                    <div className="card__marketcap">MCap: {filteredCoin.market_cap.toLocaleString("en-US",currencyObj )}</div>
                     <div className="card__circulating__supply">Circulating Supply: {<br/>} {Number(filteredCoin.circulating_supply).toLocaleString("en-US")} <strong> {filteredCoin.symbol.toUpperCase()}</strong></div>
                     
 
