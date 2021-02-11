@@ -8,7 +8,7 @@ html {
 .header {
     display: grid;
     grid-template-columns: 50% 50%;
-    height: 218px;
+    height: 150px;
 }
 
 .header__logo {
@@ -25,10 +25,10 @@ html {
 .search__input {
     height: 50px;
     width: 300px;
-    margin-top: 150px;
+    /* margin-top: 150px; */
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    /* margin-left: 2px; */
+    margin-left: 55%;
 }
 
 .search__button {

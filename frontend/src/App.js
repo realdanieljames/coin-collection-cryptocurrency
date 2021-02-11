@@ -23,7 +23,9 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [coinsPerPage, setCoinsPerPage] = useState(100)
-  const [allCoinINS, setAllCoinResults] = useState([])
+  const [allCoinINS, setAllCoinINS] = useState([])
+  const [currencyType, setCurrencyType] = useState('usd')
+  const [searchedCoins, setSearchedCoins] = useState([])
 
 
 
@@ -34,20 +36,35 @@ useEffect(()=>{
   getCryptoData()
 
 
+  console.log(coinResults)
 }, [])  
 
-console.log(coinResults)
 
-const getCryptoData = async() => {
+const getCryptoData = async(pageNumber) => {
   setLoading(true);
-  let data = await CoinGeckoClient.coins.all({'per_page': coinsPerPage, page: pageNumber});
+  
+  //allows maximum 250 assets per use
+  let data = await CoinGeckoClient.coins.all({per_page: coinsPerPage, page: pageNumber});
+
+  //get all coin id's to use as search reference of available coins in database
+  //gets all id's, name and symbols of all coins
   let allCoinsINS = await CoinGeckoClient.coins.list()
-  // console.log(allCoinsINS)
+
+  let coinCardIds =[]
+
+  allCoinsINS.data.map((value)=>{
+    // console.log(value.id)
+    coinCardIds.push(value.id)
+    
+  })
+
   setCoinResults(data.data)
-  setAllCoinResults(allCoinsINS.data)
+  setAllCoinINS(allCoinsINS.data)
+
   setLoading(false)
 
 };
+
 
 
 //=============================================================================================================//
@@ -60,13 +77,8 @@ const getCryptoData = async() => {
 
 //Change page
 const paginate = async (pageNumber)=>{
-  setLoading(true);
-  let data = await CoinGeckoClient.coins.all({'per_page': coinsPerPage, page: pageNumber});
-  setCoinResults(data.data)
+  getCryptoData(pageNumber)
 
-console.log(pageNumber)
-  setPageNumber(pageNumber)
-  setLoading(false)
 
 }
 //=============================================================================================================//
@@ -75,20 +87,20 @@ console.log(pageNumber)
   return (
     <div className="App">
       <div className="header">
-        <p className='header__logo'> COIN-CARD COLLECTION <br/>CRYPTOCURRENCY</p> 
-        <Search setSearchValue={setSearchValue}  allCoinINS={allCoinINS}/> 
+        {/* <p className='header__logo'> COIN-CARD COLLECTION <br/>CRYPTOCURRENCY</p>  */}
+        <p className='header__logo' > DIGI-CRYPTO <br/>COLLECTION</p> 
+
+     
       </div>
 
-
-        {/* <div> */}
-
-
-        {/* <Search  coinResults={coinResults} setCoinResults={setCoinResults} loading={loading} searchValue={searchValue} setSearchValue={setSearchValue}/> */}
-        {/* </div> */}
-<div>
-
-</div>
-        <CoinGeckoApi coinResults={coinResults} loading={loading} />
+        <CoinGeckoApi coinResults={coinResults} loading={loading} 
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+          allCoinINS={allCoinINS}
+          setCoinResults={setCoinResults}
+          setSearchedCoins={setSearchedCoins}
+          searchedCoins={searchedCoins}
+        />
         {/* <CoinGeckoApi coinResults={currentCoins} loading={loading} /> */}
         {/* <SearchResults /> */}
         <Pagination 
