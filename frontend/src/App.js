@@ -1,8 +1,9 @@
 
 import {useState, useEffect} from 'react'
-import CoinGeckoApi from './coinGeckoAPI/coinGeckoData'
-import Search from './search/Search'
-import Pagination from './pagination/Pagination';
+import CoinGeckoApi from './components/coinGeckoAPI/coinGeckoData'
+import Search from './components/search/Search'
+import Pagination from './components/pagination/Pagination';
+import Signup from './components/signup/Signup'
 
 import './App.css';
 const CoinGecko = require('coingecko-api');
@@ -86,7 +87,9 @@ const paginate = async (pageNumber)=>{
 
   return (
     <div className="App">
+      <Signup/>
       <div className="header">
+
         {/* <p className='header__logo'> COIN-CARD COLLECTION <br/>CRYPTOCURRENCY</p>  */}
         <p className='header__logo' > DIGI-CRYPTO <br/>COLLECTION</p> 
 
@@ -100,6 +103,8 @@ const paginate = async (pageNumber)=>{
           setCoinResults={setCoinResults}
           setSearchedCoins={setSearchedCoins}
           searchedCoins={searchedCoins}
+          coinsPerPage={coinsPerPage}
+          pageNumber={pageNumber}
         />
         {/* <CoinGeckoApi coinResults={currentCoins} loading={loading} /> */}
         {/* <SearchResults /> */}

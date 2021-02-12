@@ -20,6 +20,8 @@ const symbolData = []
 
 
     const handleSearchInput =  async(inputValue)=>{
+    
+
       setSearchValue(inputValue)
       // setCoinResults(coinResults)
       console.log(inputValue)
@@ -49,7 +51,11 @@ const symbolData = []
       market.data.map((value)=>{
 
         if(value.market_cap === null){
-          return value
+          let acceptedCoin = value
+          
+    
+          return acceptedCoin
+
         }
 
             
@@ -65,6 +71,7 @@ const symbolData = []
 
             }
             
+            
             filteredSearchArray.push(coinCard)
 
           
@@ -76,7 +83,7 @@ const symbolData = []
       }
   
     //  setCoinResults(coinResults)
-      //  console.log(value)
+      //  console.log(acceptedCoin)
       // }
       // )/
 
@@ -108,6 +115,7 @@ const symbolData = []
   }
 
         const searchIdentifiers =  
+        
 
         <div className="coin__info">
 
@@ -167,6 +175,9 @@ const symbolData = []
                   <div>
                   {searchValue.length !== 0 ?
                       <div>
+                        <div className="search__length">
+                          {searchedCoins.length} matching Results
+                        </div>
                       {searchIdentifiers}
                       </div>
                     :

@@ -7,7 +7,7 @@ import './Pagination.css'
 
     for(let i = 1; i <=Math.ceil(totalCoins / coinsPerPage); i++){
         pageNumbers.push(i)
-    }
+    } 
     return (
         <nav>
             <div  className="page__control">
