@@ -1,11 +1,16 @@
 
 import {useState, useEffect} from 'react'
+import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import CoinGeckoApi from './components/coinGeckoAPI/coinGeckoData'
 import Search from './components/search/Search'
 import Pagination from './components/pagination/Pagination';
 import Signup from './components/signup/Signup'
+import Login from './components/login/Login'
+import MyCollection from './components/myCollection/MyCollection';
+import MyWatchlist from './components/myWatchlist/MyWatchlist';
+import useToken from './useToken';
 
-import './App.css';
 const CoinGecko = require('coingecko-api');
 
 
@@ -27,6 +32,16 @@ function App() {
   const [allCoinINS, setAllCoinINS] = useState([])
   const [currencyType, setCurrencyType] = useState('usd')
   const [searchedCoins, setSearchedCoins] = useState([])
+
+  const { token, setToken } = useToken();
+
+
+//=============================================================================================================//
+//=============================================================================================================//
+
+
+
+
 
 
 
@@ -85,16 +100,35 @@ const paginate = async (pageNumber)=>{
 //=============================================================================================================//
 //=============================================================================================================//
 
+if(!token) {
+  return <Login setToken={setToken} />
+}
+//=============================================================================================================//
+//=============================================================================================================//
+
   return (
+    <div>
+
     <div className="App">
-      <Signup/>
-      <div className="header">
+    <nav className="header__navigator">
+    {/* <div className="header"> */}
+        <p className='header__logo' > CRYPTO COLLECTION. <br/>LINK</p> 
+      {/* </div> */}
+        <div className="registration__buttons">
+        < Login/>
+        <Signup/>
+        </div>
+    </nav>
 
-        {/* <p className='header__logo'> COIN-CARD COLLECTION <br/>CRYPTOCURRENCY</p>  */}
-        <p className='header__logo' > DIGI-CRYPTO <br/>COLLECTION</p> 
-
-     
-      </div>
+{/* =============================================================================================================*/}
+{/* =============================================================================================================*/}
+  
+      {/* <div className="header">
+        <p className='header__logo' > CRYPTO COLLECTION. <br/>LINK</p> 
+      </div> */}
+{/* =============================================================================================================*/}
+{/* =============================================================================================================*/}
+  
 
         <CoinGeckoApi coinResults={coinResults} loading={loading} 
           setSearchValue={setSearchValue}
@@ -106,19 +140,32 @@ const paginate = async (pageNumber)=>{
           coinsPerPage={coinsPerPage}
           pageNumber={pageNumber}
         />
-        {/* <CoinGeckoApi coinResults={currentCoins} loading={loading} /> */}
-        {/* <SearchResults /> */}
+
         <Pagination 
           coinsPerPage={coinsPerPage} 
           totalCoins={allCoinINS.length} 
           paginate={paginate}
           pageNumber={pageNumber}
         />
-
-
-
-
+{/* =============================================================================================================*/}
+{/* =============================================================================================================*/}
     </div>
+
+    <div className="wrapper">
+       {/* <h1>Application</h1> */}
+      <BrowserRouter>
+        <Switch>
+          <Route path="/collection">
+            <MyCollection />
+          </Route>
+          <Route path="/watchlist">
+            <MyWatchlist />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </div>
+    </div>
+
   );
 }
 

@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import PropTypes from 'prop-types';
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,8 +10,32 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
- const Signup = () => {
+
+
+//=============================================================================================================//
+//=============================================================================================================//
+
+async function loginUser(credentials) {
+  return fetch('http://localhost:8080/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
+
+//=============================================================================================================//
+//=============================================================================================================//
+
+
+
+ const Login = ({setToken}) => {
   const [open, setOpen] = useState(false);
+  const [username, setUserName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   //=============================================================================================================//
   //=============================================================================================================//
@@ -25,93 +51,94 @@ import DialogTitle from '@material-ui/core/DialogTitle';
   //=============================================================================================================//
   //=============================================================================================================//
 
-//   return (
-//     <div>
-//       <nav className="header__navigator">
-//         <div className="registration__buttons">
-//           <a className="login__button" href={handleClickOpen}>Login</a>
-//           <a className="signup__button">Register</a>
-//         </div>
-//       </nav>
 
-//       <Dialog
-//         open={open}
-//         onClose={handleClose}
-//         aria-labelledby="form-dialog-title"
-//       ></Dialog>
-//     </div>
-//   );
-
-
-
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const token = await loginUser({
+      username,
+      password
+    });
+    setToken(token);
+  }
+//=============================================================================================================//
+//=============================================================================================================//
 
 return (
     <div>
 
-        <span className="signup__button" onClick={handleClickOpen}>Sign up</span>
-
+    <span className="login__button" onClick={handleClickOpen}>Login</span>
+ 
       <Dialog open={open} onClose={handleClose}  fullWidth='true' maxWidth='xs' aria-labelledby="form-dialog-title">
-        
+
+
         <DialogContent>
-          <DialogTitle id="form-dialog-title"><h1> Sign Up <br/> Create an Account</h1></DialogTitle>
+          <DialogTitle id="form-dialog-title"> <h1>Log In</h1></DialogTitle>
           <DialogContentText>
-          <h3>Already have an account? <a href="">Log In here.</a></h3>
+            <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
 
           </DialogContentText>
           <hr/>
           <TextField
-            // autoFocus
-            // size='normal'
             variant='outlined'
             margin="dense"
             id="username"
             label="Username"
             type="email"
             fullWidth
+            onChange={e => setUserName(e.target.value)}
           />
 
-          {/* <hr/> */}
+          <hr/>
           <TextField
-
-            // size='normal'
             variant='outlined'
             margin="dense"
             id="email"
             label="Email Address"
             type="email"
             fullWidth
+            onChange={e => setEmail(e.target.value)}
           />
-                 <br/>
+          <hr/>
           <TextField
-            // size='normal'
             variant='outlined'
             margin="dense"
             id="password"
             label="Password"
             type="email"
             fullWidth
+            onChange={e => setPassword(e.target.value)}
           />
-                 <hr/>
-        </DialogContent>
+            <hr/>
+        </DialogContent> 
         <hr/>
       <hr/>
       <hr/>
-      <hr/>
-      {/* <hr/> */}
         <DialogActions>
           <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
-           {'<<<< ❌ Sign up Later'}
+          ❌ Cancel
           </button>
-          <button style={{backgroundColor: 'gold',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
-            Create Account ➕
+          <button style={{backgroundColor: 'gold',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} 
+            onClick={handleSubmit} >
+           Login 🔑 🚪
           </button>
         </DialogActions>
       <hr/>
       <hr/>
       <hr/>
+      <hr/>
+      <hr/>
       </Dialog>
     </div>
+    // </div>
   );
 };
 
-export default Signup;
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
+
+
+
+
+export default Login;

@@ -32,7 +32,14 @@ console.log(searchValue.length)
 
         
         <div>
-
+            <nav className="router__tabs">
+                <div className="my__collection__tab">
+                    My Collection
+                </div>
+                <div  className="my__watchlist__tab">
+                    My Watchlist
+                </div>
+            
             <Search 
                 coinResults={coinResults}
                 setSearchValue={setSearchValue}
@@ -42,6 +49,7 @@ console.log(searchValue.length)
                 setSearchedCoins={setSearchedCoins}
                 searchedCoins={searchedCoins}
                 />
+            </nav>
              {/* </div> */}
 
             {searchValue.length === 0 ?        
