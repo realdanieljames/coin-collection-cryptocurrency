@@ -7,7 +7,7 @@ const port = 8080
 
 app.use(cors());
 
-app.use('/api/login', (req, res) => {
+app.use('/login', (req, res) => {
     res.send({
         token: 'test123'
     });

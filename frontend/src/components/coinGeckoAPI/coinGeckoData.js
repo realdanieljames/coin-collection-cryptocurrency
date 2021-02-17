@@ -22,7 +22,7 @@ const CoinGeckoApi = ({coinResults, loading, setCoinResults, searchValue,setSear
 console.log(coinResults)
 console.log(searchedCoins)
 console.log(searchValue)
-console.log(searchValue.length)
+// console.log(searchValue.length)
 
 //=============================================================================================================//
 //=============================================================================================================//
