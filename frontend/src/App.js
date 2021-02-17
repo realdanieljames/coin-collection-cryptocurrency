@@ -120,7 +120,17 @@ if(!token) {
         </div>
 
     </nav>
-
+    <nav className="router__tabs">
+                <div className="my__collection__tab">
+                    <span className="tab__text">My Collection</span>
+                </div>
+                <div  className="my__watchlist__tab">
+                  <span className="tab__text">My Watchlist</span>
+                </div>
+                <div  className="shop__tab">
+                  <span className="tab__text">Buy T-Shirt</span>
+                </div>
+    </nav>
 
 {/* =============================================================================================================*/}
 {/* =============================================================================================================*/}

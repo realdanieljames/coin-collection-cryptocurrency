@@ -16,7 +16,9 @@ const idData = []
 const nameData = []
 const symbolData = []
 
-
+{/* =============================================================================================================*/}
+{/* =============================================================================================================*/}
+  
 
 
     const handleSearchInput =  async(inputValue)=>{
@@ -36,7 +38,9 @@ const symbolData = []
         
 
         })
-
+{/* =============================================================================================================*/}
+{/* =============================================================================================================*/}
+  
 
         const filteredSearch = idData.filter(value => value.includes(inputValue))
         // console.log(filteredSearch)
@@ -92,7 +96,7 @@ const symbolData = []
 
       const searchBar = 
       // <div className="search__element">
-      // <nav className="router__tabs">
+      <nav className="search__element">
 
       <input 
           className="search__input"
@@ -108,7 +112,7 @@ const symbolData = []
       </button>     */}
       {/* // </div> */}
 
-// </nav>
+ </nav>
     
 
     const currencyObj = {
