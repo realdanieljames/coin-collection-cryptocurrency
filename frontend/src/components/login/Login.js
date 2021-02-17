@@ -134,9 +134,9 @@ return (
 };
 
 
-// Login.propTypes = {
-//   setToken: PropTypes.func.isRequired
-// }
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
 
 
 
