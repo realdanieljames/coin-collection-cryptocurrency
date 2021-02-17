@@ -36,14 +36,6 @@ function App() {
   const { token, setToken } = useToken();
 
 
-//=============================================================================================================//
-//=============================================================================================================//
-
-
-
-
-
-
 
 //=============================================================================================================//
 //=============================================================================================================//
@@ -128,39 +120,15 @@ if(!token) {
                   <span className="tab__text">My Watchlist</span>
                 </div>
                 <div  className="shop__tab">
-                  <span className="tab__text">Buy T-Shirt</span>
+                  <span className="tab__text">Get T-Shirt</span>
                 </div>
     </nav>
 
-{/* =============================================================================================================*/}
-{/* =============================================================================================================*/}
-  
-      {/* <div className="header">
-        <p className='header__logo' > CRYPTO COLLECTION. <br/>LINK</p> 
-      </div> */}
+
 {/* =============================================================================================================*/}
 {/* =============================================================================================================*/}
   
 
-
-        <CoinGeckoApi coinResults={coinResults} loading={loading} 
-          setSearchValue={setSearchValue}
-          searchValue={searchValue}
-          allCoinINS={allCoinINS}
-          setCoinResults={setCoinResults}
-          setSearchedCoins={setSearchedCoins}
-          searchedCoins={searchedCoins}
-          coinsPerPage={coinsPerPage}
-          pageNumber={pageNumber}
-          />
-
-
-        <Pagination 
-          coinsPerPage={coinsPerPage} 
-          totalCoins={allCoinINS.length} 
-          paginate={paginate}
-          pageNumber={pageNumber}
-        />
 {/* =============================================================================================================*/}
 {/* =============================================================================================================*/}
     </div>
@@ -169,12 +137,34 @@ if(!token) {
        {/* <h1>Application</h1> */}
       <BrowserRouter>
         <Switch>
-          <Route path="/collection">
+          <Route path="/collection" >
             <MyCollection />
           </Route>
           <Route path="/watchlist">
             <MyWatchlist />
           </Route>
+          <Route path="/">
+          <CoinGeckoApi 
+            coinResults={coinResults} 
+            loading={loading} 
+            setSearchValue={setSearchValue}
+            searchValue={searchValue}
+            allCoinINS={allCoinINS}
+            setCoinResults={setCoinResults}
+            setSearchedCoins={setSearchedCoins}
+            searchedCoins={searchedCoins}
+            coinsPerPage={coinsPerPage}
+            pageNumber={pageNumber}
+          />
+
+          <Pagination 
+            coinsPerPage={coinsPerPage} 
+            totalCoins={allCoinINS.length} 
+            paginate={paginate}
+            pageNumber={pageNumber}
+          />
+          </Route>
+
         </Switch>
       </BrowserRouter>
     </div>

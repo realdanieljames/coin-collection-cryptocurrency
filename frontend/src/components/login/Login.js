@@ -16,7 +16,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 //=============================================================================================================//
 
 async function loginUser(credentials) {
-  return fetch('http://localhost:8080/login', {
+  return fetch('http://localhost:8080/api/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
