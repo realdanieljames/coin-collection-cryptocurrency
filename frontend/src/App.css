@@ -57,13 +57,42 @@
         padding-left: 20px;
     }
     
+    .router__tabs {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        /* height: 10px; */
+        ;
+    }
+    
+    .my__collection__tab {
+        width: 50px;
+        background-color: gold;
+        grid-column: 1/2;
+        height: 30px;
+        border-bottom-left-radius: 10px;
+        /* align-content: center; */
+        /* color: white; */
+    }
+    
+    .my__watchlist__tab {
+        width: 50px;
+        background-color: gold;
+        grid-column: 2/3;
+        height: 30px;
+        border-bottom-right-radius: 10px;
+    }
+    
     .search__input {
-        height: 35px;
+        display: grid;
+        height: 25px;
         width: 300px;
+        justify-self: end;
         /* margin-top: 150px; */
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
-        margin-left: 55%;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        /* margin-left: 55%; */
     }
     
     .search__button {

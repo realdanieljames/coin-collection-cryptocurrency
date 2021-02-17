@@ -91,7 +91,9 @@ const symbolData = []
     
 
       const searchBar = 
-      <div className="search__element">
+      // <div className="search__element">
+      // <nav className="router__tabs">
+
       <input 
           className="search__input"
           type="text"
@@ -99,13 +101,14 @@ const symbolData = []
           value={searchValue}
           onChange={(e)=> handleSearchInput(e.target.value)}
           />
-      <button 
+      {/* <button 
         className="search__button"
         // onClick={handleSearchButton}
         >Search
-      </button>    
-      </div>
+      </button>     */}
+      {/* // </div> */}
 
+// </nav>
     
 
     const currencyObj = {

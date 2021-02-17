@@ -118,7 +118,21 @@ if(!token) {
         < Login/>
         <Signup/>
         </div>
+          <div className="my__collection__tab">
+                    My Collection
+                </div>
+              <div  className="my__watchlist__tab">
+                  My Watchlist
+              </div>
     </nav>
+    {/* <nav className="router__tabs"> */}
+                {/* <div className="my__collection__tab">
+                    My Collection
+                </div>
+                <div  className="my__watchlist__tab">
+                    My Watchlist
+                </div> */}
+    {/* </nav> */}
 
 {/* =============================================================================================================*/}
 {/* =============================================================================================================*/}
@@ -130,6 +144,7 @@ if(!token) {
 {/* =============================================================================================================*/}
   
 
+
         <CoinGeckoApi coinResults={coinResults} loading={loading} 
           setSearchValue={setSearchValue}
           searchValue={searchValue}
@@ -139,7 +154,8 @@ if(!token) {
           searchedCoins={searchedCoins}
           coinsPerPage={coinsPerPage}
           pageNumber={pageNumber}
-        />
+          />
+
 
         <Pagination 
           coinsPerPage={coinsPerPage} 

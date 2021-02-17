@@ -1,13 +1,3 @@
-.router__tabs {
-    display: grid;
-    align-self: center;
-}
-
-.my__collection__tab {
-    background-color: gold;
-    color: white;
-}
-
 .coin__info {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
