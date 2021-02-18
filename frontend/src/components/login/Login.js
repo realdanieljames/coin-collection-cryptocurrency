@@ -84,7 +84,7 @@ return (
 
 
         <DialogContent>
-          <DialogTitle id="form-dialog-title"> <h1>Log In to your Account<br/>Sign In</h1></DialogTitle>
+          <DialogTitle id="form-dialog-title"> Log In to your Account<br/>Sign In</DialogTitle>
           {/* <DialogContentText>
             <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
 
