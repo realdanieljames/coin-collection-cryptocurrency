@@ -6,10 +6,10 @@ const {
 } = require("../utils/auth");
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 exports.signup = (req, res, next) => {
-    let { name, email, password, password_confirmation } = req.body;
+    let { username, email, password, password_confirmation } = req.body;
     let errors = [];
-    if (!name) {
-        errors.push({ name: "required" });
+    if (!username) {
+        errors.push({ username: "required" });
     }
     if (!email) {
         errors.push({ email: "required" });
@@ -37,7 +37,7 @@ exports.signup = (req, res, next) => {
                 return res.status(422).json({ errors: [{ user: "email already exists" }] });
             } else {
                 const user = new User({
-                    name: name,
+                    username: username,
                     email: email,
                     password: password,
                 });
