@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -22,25 +23,12 @@ import DialogTitle from '@material-ui/core/DialogTitle';
     setOpen(false);
   };
 
+
   //=============================================================================================================//
   //=============================================================================================================//
+const handleClickSubmit =()=>{
 
-//   return (
-//     <div>
-//       <nav className="header__navigator">
-//         <div className="registration__buttons">
-//           <a className="login__button" href={handleClickOpen}>Login</a>
-//           <a className="signup__button">Register</a>
-//         </div>
-//       </nav>
-
-//       <Dialog
-//         open={open}
-//         onClose={handleClose}
-//         aria-labelledby="form-dialog-title"
-//       ></Dialog>
-//     </div>
-//   );
+}
 
 
 
@@ -53,11 +41,15 @@ return (
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">
         
         <DialogContent>
-          <DialogTitle id="form-dialog-title"><h1> Sign Up <br/> Create an Account</h1></DialogTitle>
+          <DialogTitle id="form-dialog-title"><h1>Create an Account <br/>Sign Up </h1></DialogTitle>
           <DialogContentText>
-          <h3>Already have an account? <a href="">Log In here.</a></h3>
+          <h3>Already have an account? <a href="">Click here to Log In.</a></h3>
           </DialogContentText>
           <hr/>
+
+
+{/* //=============================================================================================================// */}
+{/* //=============================================================================================================// */}
           <TextField
             // autoFocus
             // size='normal'
@@ -80,7 +72,7 @@ return (
             type="email"
             fullWidth
           />
-                 <br/>
+          <br/>
           <TextField
             // size='normal'
             variant='outlined'
@@ -90,13 +82,17 @@ return (
             type="email"
             fullWidth
           />
-                 <hr/>
+          <hr/>
+
         </DialogContent>
         <hr/>
       <hr/>
       <hr/>
       <hr/>
-      {/* <hr/> */}
+
+{/* //=============================================================================================================// */}
+{/* //=============================================================================================================// */}
+
         <DialogActions>
           <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
            {'<<<< ❌ Sign up Later'}
@@ -110,6 +106,9 @@ return (
       <hr/>
       </Dialog>
     </div>
+
+
+
   );
 };
 

@@ -20,7 +20,9 @@ mongoose
 app.use(bodyParser.json());
 app.use(cors());
 //routes middleware
+
 app.use('/api', authRoutes);
+
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Server is running on ${port}`)

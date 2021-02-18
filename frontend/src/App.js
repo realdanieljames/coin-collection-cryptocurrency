@@ -1,15 +1,16 @@
 
 import {useState, useEffect} from 'react'
 import './App.css';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route,Router, Switch, Link } from 'react-router-dom';
 import CoinGeckoApi from './components/coinGeckoAPI/coinGeckoData'
+import Navbar from './components/navbar/Navbar'
 import Search from './components/search/Search'
 import Pagination from './components/pagination/Pagination';
 import Signup from './components/signup/Signup'
 import Login from './components/login/Login'
 import MyCollection from './components/myCollection/MyCollection';
 import MyWatchlist from './components/myWatchlist/MyWatchlist';
-import useToken from './useToken';
+
 
 const CoinGecko = require('coingecko-api');
 
@@ -44,7 +45,7 @@ useEffect(()=>{
   getCryptoData()
 
 
-  console.log(coinResults)
+  // console.log(coinResults)
 }, [])  
 
 
@@ -100,31 +101,10 @@ const paginate = async (pageNumber)=>{
 
   return (
     <div>
-
     <div className="App">
-    <nav className="header__navigator">
-    {/* <div className="header"> */}
-        <p className='header__logo' > CRYPTO COLLECTION. <br/>LINK</p> 
-      {/* </div> */}
-        <div className="registration__buttons">
-        < Login/>
-        <Signup/>
-        </div>
 
-    </nav>
-    <nav className="router__tabs">
 
-                <div className="my__collection__tab">
-                    <span className="tab__text"> My Collection</span>
-                </div>
-                <div  className="my__watchlist__tab">
-                  <span className="tab__text">My Watchlist</span>
-                </div>
-                <div  className="shop__tab">
-                  <span className="tab__text">Get T-Shirt</span>
-                </div>
-
-    </nav>
+  
 
 
 {/* =============================================================================================================*/}
@@ -133,18 +113,11 @@ const paginate = async (pageNumber)=>{
 
 {/* =============================================================================================================*/}
 {/* =============================================================================================================*/}
-    </div>
 
-    <div className="wrapper">
-       {/* <h1>Application</h1> */}
       <BrowserRouter>
+        <Navbar/>
         <Switch>
-          <Route path="/collection" >
-            <MyCollection />
-          </Route>
-          <Route path="/watchlist">
-            <MyWatchlist />
-          </Route>
+          
           <Route path="/">
           <CoinGeckoApi 
             coinResults={coinResults} 
@@ -165,6 +138,14 @@ const paginate = async (pageNumber)=>{
             paginate={paginate}
             pageNumber={pageNumber}
           />
+          </Route>
+
+          <Route path="/collection" >
+            <MyCollection />
+          </Route>
+
+          <Route path="/watchlist">
+            <MyWatchlist />
           </Route>
 
         </Switch>

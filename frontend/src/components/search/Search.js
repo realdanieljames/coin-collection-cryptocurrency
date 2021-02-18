@@ -26,7 +26,7 @@ const symbolData = []
 
       setSearchValue(inputValue)
       // setCoinResults(coinResults)
-      console.log(inputValue)
+      // console.log(inputValue)
 
 
       // const getEach =
@@ -80,7 +80,7 @@ const symbolData = []
 
           
         })
-        console.log(filteredSearchArray)
+        // console.log(filteredSearchArray)
         setSearchedCoins(filteredSearchArray)
         // setCoinResults(filteredSearchArray)
         

@@ -19,9 +19,9 @@ const CoinGeckoApi = ({coinResults, loading, setCoinResults, searchValue,setSear
         // currencyDisplay: 'code'
     }
 
-console.log(coinResults)
-console.log(searchedCoins)
-console.log(searchValue)
+// console.log(coinResults)
+// console.log(searchedCoins)
+// console.log(searchValue)
 // console.log(searchValue.length)
 
 //=============================================================================================================//
@@ -79,7 +79,7 @@ console.log(searchValue)
                             BTC: ₿{coinInfo.market_data.current_price.btc}
                             <hr/> 
                             ETH: {coinInfo.market_data.current_price.eth}
-                            <hr/>    
+                            {/* <hr/>     */}
                             </div>      
                     
                     

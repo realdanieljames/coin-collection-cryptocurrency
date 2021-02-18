@@ -16,7 +16,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 //=============================================================================================================//
 
 async function loginUser(credentials) {
-  return fetch('http://127.0.0.1:8080/api/signin', {
+  // return fetch('http://127.0.0.1:8080/api/signin', {
+  return fetch('/api/signin', {
+
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -24,6 +26,11 @@ async function loginUser(credentials) {
     body: JSON.stringify(credentials)
   })
     .then(data => data.json())
+    
+    //  axios.create({
+    //    baseURL: 'api',
+    //    timeout: 5000
+    //  })
  }
 
 //=============================================================================================================//
@@ -31,7 +38,7 @@ async function loginUser(credentials) {
 
 
 
- const Login = ({setToken}) => {
+ const Login = () => {
   const [open, setOpen] = useState(false);
   const [username, setUserName] = useState();
   const [email, setEmail] = useState();
@@ -54,8 +61,9 @@ async function loginUser(credentials) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginUser({
+    return await loginUser({
       username,
+      email,
       password
     });
     // setToken(token);
@@ -76,11 +84,11 @@ return (
 
 
         <DialogContent>
-          <DialogTitle id="form-dialog-title"> <h1>Log In</h1></DialogTitle>
-          <DialogContentText>
+          <DialogTitle id="form-dialog-title"> <h1>Log In to your Account<br/>Sign In</h1></DialogTitle>
+          {/* <DialogContentText>
             <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
 
-          </DialogContentText>
+          </DialogContentText> */}
           <hr/>
           <TextField
             variant='outlined'
@@ -112,10 +120,19 @@ return (
             fullWidth
             onChange={e => setPassword(e.target.value)}
           />
+        
             <hr/>
+            <DialogContentText>
+            <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
+
+          </DialogContentText>
+
+
         </DialogContent> 
         <hr/>
       <hr/>
+
+        
       <hr/>
         <DialogActions>
           <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
