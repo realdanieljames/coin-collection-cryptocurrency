@@ -50,13 +50,12 @@ return (
 
         <span className="signup__button" onClick={handleClickOpen}>Sign up</span>
 
-      <Dialog open={open} onClose={handleClose}  fullWidth='true' maxWidth='xs' aria-labelledby="form-dialog-title">
+      <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">
         
         <DialogContent>
           <DialogTitle id="form-dialog-title"><h1> Sign Up <br/> Create an Account</h1></DialogTitle>
           <DialogContentText>
           <h3>Already have an account? <a href="">Log In here.</a></h3>
-
           </DialogContentText>
           <hr/>
           <TextField

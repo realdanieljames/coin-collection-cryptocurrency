@@ -1,7 +1,7 @@
 
 import {useState, useEffect} from 'react'
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import CoinGeckoApi from './components/coinGeckoAPI/coinGeckoData'
 import Search from './components/search/Search'
 import Pagination from './components/pagination/Pagination';
@@ -33,7 +33,7 @@ function App() {
   const [currencyType, setCurrencyType] = useState('usd')
   const [searchedCoins, setSearchedCoins] = useState([])
 
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
 
 
 
@@ -92,9 +92,9 @@ const paginate = async (pageNumber)=>{
 //=============================================================================================================//
 //=============================================================================================================//
 
-if(!token) {
-  return <Login setToken={setToken} />
-}
+// if(!token) {
+//   return <Login setToken={setToken} />
+// }
 //=============================================================================================================//
 //=============================================================================================================//
 
@@ -113,8 +113,9 @@ if(!token) {
 
     </nav>
     <nav className="router__tabs">
+
                 <div className="my__collection__tab">
-                    <span className="tab__text">My Collection</span>
+                    <span className="tab__text"> My Collection</span>
                 </div>
                 <div  className="my__watchlist__tab">
                   <span className="tab__text">My Watchlist</span>
@@ -122,6 +123,7 @@ if(!token) {
                 <div  className="shop__tab">
                   <span className="tab__text">Get T-Shirt</span>
                 </div>
+
     </nav>
 
 

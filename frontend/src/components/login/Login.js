@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import PropTypes from 'prop-types';
-
+import axios from 'axios'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,7 +16,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 //=============================================================================================================//
 
 async function loginUser(credentials) {
-  return fetch('http://localhost:8080/api/signin', {
+  return fetch('http://127.0.0.1:8080/api/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -58,7 +58,9 @@ async function loginUser(credentials) {
       username,
       password
     });
-    setToken(token);
+    // setToken(token);
+
+
   }
 //=============================================================================================================//
 //=============================================================================================================//
@@ -68,7 +70,9 @@ return (
 
     <span className="login__button" onClick={handleClickOpen}>Login</span>
  
-      <Dialog open={open} onClose={handleClose}  fullWidth='true' maxWidth='xs' aria-labelledby="form-dialog-title">
+      <Dialog open={open} onClose={handleClose}  aria-labelledby="form-dialog-title"
+       fullWidth={true} maxWidth='xs'
+      >
 
 
         <DialogContent>
@@ -134,9 +138,9 @@ return (
 };
 
 
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired
-}
+// Login.propTypes = {
+//   setToken: PropTypes.func.isRequired
+// }
 
 
 
