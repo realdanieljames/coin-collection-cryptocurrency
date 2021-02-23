@@ -12,26 +12,27 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 
+
 //=============================================================================================================//
 //=============================================================================================================//
 
-async function loginUser(credentials) {
-  // return fetch('http://127.0.0.1:8080/api/signin', {
-  return fetch('/api/signin', {
+// async function loginUser(credentials) {
+//   // return fetch('http://127.0.0.1:8080/api/signin', {
+//   return fetch('/api/signin', {
 
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(credentials)
+//   })
+//     .then(data => data.json())
     
-    //  axios.create({
-    //    baseURL: 'api',
-    //    timeout: 5000
-    //  })
- }
+//     //  axios.create({
+//     //    baseURL: 'api',
+//     //    timeout: 5000
+//     //  })
+//  }
 
 //=============================================================================================================//
 //=============================================================================================================//
@@ -61,13 +62,14 @@ async function loginUser(credentials) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    return await loginUser({
-      username,
-      email,
-      password
-    });
+    // return await loginUser({
+    //   username,
+    //   email,
+    //   password
+    // }
+    // );
     // setToken(token);
-
+    // await axios.post('127.0.0.1:8080/api/signin', signin)
 
   }
 //=============================================================================================================//
@@ -76,7 +78,7 @@ async function loginUser(credentials) {
 return (
     <div>
 
-    <span className="login__button" onClick={handleClickOpen}>Login</span>
+    <span className="login__button" onClick={handleClickOpen}>Sign In</span>
  
       <Dialog open={open} onClose={handleClose}  aria-labelledby="form-dialog-title"
        fullWidth={true} maxWidth='xs'
@@ -84,7 +86,7 @@ return (
 
 
         <DialogContent>
-          <DialogTitle id="form-dialog-title"> Log In to your Account<br/>Sign In</DialogTitle>
+          <DialogTitle id="form-dialog-title"><h1> Log In to your Account<br/>Sign In </h1> </DialogTitle>
           {/* <DialogContentText>
             <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
 

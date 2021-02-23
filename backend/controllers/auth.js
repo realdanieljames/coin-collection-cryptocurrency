@@ -9,81 +9,88 @@ const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-
 
 
 exports.signup = (req, res, next) => {
-    let { username, email, password, password_confirmation } = req.body;
-    let errors = [];
-    if (!username) {
-        errors.push({ username: "required" });
-    }
-    if (!email) {
-        errors.push({ email: "required" });
-    }
-    if (!emailRegexp.test(email)) {
-        errors.push({ email: "invalid" });
-    }
-    if (!password) {
-        errors.push({ password: "required" });
-    }
-    if (!password_confirmation) {
-        errors.push({
-            password_confirmation: "required",
-        });
-    }
-    if (password != password_confirmation) {
-        errors.push({ password: "mismatch" });
-    }
-    if (errors.length > 0) {
-        return res.status(422).json({ errors: errors });
-    }
-    User.findOne({ email: email })
-        .then(user => {
-            if (user) {
-                return res.status(422).json({ errors: [{ user: "email already exists" }] });
-            } else {
-                const user = new User({
-                    username: username,
-                    email: email,
-                    password: password,
-                });
-                bcrypt.genSalt(10, function(err, salt) {
-                    bcrypt.hash(password, salt, function(err, hash) {
-                        if (err) throw err;
-                        user.password = hash;
-                        user.save()
-                            .then(response => {
-                                res.status(200).json({
-                                    success: true,
-                                    result: response
-                                })
-                            })
-                            .catch(err => {
-                                res.status(500).json({
-                                    errors: [{ error: err }]
-                                });
-                            });
-                    });
-                });
-            }
-        }).catch(err => {
-            res.status(500).json({
-                errors: [{ error: 'Something went wrong' }]
+        let { username, email, password, password_confirmation } = req.body;
+        let errors = [];
+        if (!username) {
+            errors.push({ username: " username required" });
+        }
+        if (!email) {
+            errors.push({ email: "password required" });
+        }
+        if (!emailRegexp.test(email)) {
+            errors.push({ email: "email structure invalid" });
+        }
+        if (!password) {
+            errors.push({ password: "password required" });
+        }
+        if (!password_confirmation) {
+            errors.push({
+                password_confirmation: "password confirmation required",
             });
-        })
-}
+        }
+        if (password != password_confirmation) {
+            errors.push({ password: "password and confirmation password mismatched" });
+        }
+        if (errors.length > 0) {
+            return res.status(422).json({ errors: errors });
+        }
+        //===============================================================================================//
+        //===============================================================================================//
+        User.findOne({ email: email })
+            .then(user => {
+                if (user) {
+                    return res.status(422).json({ errors: [{ user: "email already exists" }] });
+                } else {
+                    const user = new User({
+                        username: username,
+                        email: email,
+                        password: password,
+                    });
+                    bcrypt.genSalt(10, function(err, salt) {
+                        bcrypt.hash(password, salt, function(err, hash) {
+                            if (err) throw err;
+                            user.password = hash;
+                            user.save()
+                                .then(response => {
+                                    res.status(200).json({
+                                        success: true,
+                                        result: response
+                                    })
+                                })
+                                .catch(err => {
+                                    res.status(500).json({
+                                        errors: [{ error: err }]
+                                    });
+                                });
+                        });
+                    });
+                }
+            }).catch(err => {
+                res.status(500).json({
+                    errors: [{ error: 'Something went wrong' }]
+                });
+            })
+    }
+    //===============================================================================================//
+    //===============================================================================================//
 exports.signin = (req, res) => {
     let { email, password } = req.body;
     let errors = [];
     if (!email) {
-        errors.push({ email: "required" });
+        errors.push({ email: "email required" });
     }
     if (!emailRegexp.test(email)) {
         errors.push({ email: "invalid email" });
     }
     if (!password) {
-        errors.push({ passowrd: "required" });
+        errors.push({ password: "password required" });
     }
     if (errors.length > 0) {
         return res.status(422).json({ errors: errors });
     }
+    //===============================================================================================//
+    //===============================================================================================//
+    // User.findOne({ email: email }).then(user => {
     User.findOne({ email: email }).then(user => {
         if (!user) {
             return res.status(404).json({
@@ -94,7 +101,7 @@ exports.signin = (req, res) => {
                 if (!isMatch) {
                     return res.status(400).json({
                         errors: [{
-                            password: "incorrect"
+                            password: "password incorrect"
                         }]
                     });
                 }
@@ -105,8 +112,11 @@ exports.signin = (req, res) => {
                 );
                 jwt.verify(access_token, process.env.TOKEN_SECRET, (err,
                     decoded) => {
+
                     if (err) {
-                        res.status(500).json({ erros: err });
+                        res.status(500).json({
+                            errors: err
+                        });
                     }
                     if (decoded) {
                         return res.status(200).json({
@@ -117,10 +127,11 @@ exports.signin = (req, res) => {
                     }
                 });
             }).catch(err => {
+                // console.log('here')
                 res.status(500).json({ erros: err });
             });
         }
     }).catch(err => {
-        res.status(500).json({ erros: err });
+        res.status(500).json({ errors: err });
     });
 }

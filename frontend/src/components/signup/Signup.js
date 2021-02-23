@@ -41,7 +41,7 @@ return (
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">
         
         <DialogContent>
-          <DialogTitle id="form-dialog-title">Create an Account <br/>Sign Up </DialogTitle>
+          <DialogTitle id="form-dialog-title"><h1>Create an Account <br/>Sign Up</h1> </DialogTitle>
           <DialogContentText>
           <h3>Already have an account? <a href="">Click here to Log In.</a></h3>
           </DialogContentText>
@@ -57,7 +57,7 @@ return (
             margin="dense"
             id="username"
             label="Username"
-            type="email"
+            // type="email"
             fullWidth
           />
 
@@ -79,7 +79,16 @@ return (
             margin="dense"
             id="password"
             label="Password"
-            type="email"
+            type="password"
+            fullWidth
+          />
+          <TextField
+            // size='normal'
+            variant='outlined'
+            margin="dense"
+            id="confirm password"
+            label="Confirm Password"
+            type="password"
             fullWidth
           />
           <hr/>
