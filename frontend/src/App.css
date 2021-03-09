@@ -14,7 +14,7 @@ html {
 .header {
     display: grid;
     grid-template-columns: 50% 50%;
-    height: 50px;
+    height: 30px;
 }
 
 .header__navigator {
@@ -22,7 +22,7 @@ html {
     grid-template-columns: 50% 50%;
     /* grid-template-columns: 100%; */
     /* grid-template-rows: 100%; */
-    height: 60px;
+    height: 55px;
     background-color: gold;
 }
 
@@ -128,10 +128,10 @@ html {
     width: 300px;
     grid-column: 4/5;
     /* justify-self: end; */
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    /* border-top-left-radius: 10px; */
+    /* border-bottom-left-radius: 10px; */
+    /* border-bottom-right-radius: 10px; */
+    /* border-top-right-radius: 10px; */
 }
 
 .search__button {

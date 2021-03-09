@@ -9,6 +9,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
+
+
  const Signup = () => {
   const [open, setOpen] = useState(false);
 
@@ -26,8 +28,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
   //=============================================================================================================//
   //=============================================================================================================//
-const handleClickSubmit =()=>{
+ const createAccountSubmitButton = async ()=>{
+console.log('button')
+const signUpAPI ={
+  method: 'get',
+  url: '127.0.0.1:8080/api/signup'
+}
 
+let response = await axios(signUpAPI)
+console.log(response)
 }
 
 
@@ -41,9 +50,9 @@ return (
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">
         
         <DialogContent>
-          <DialogTitle id="form-dialog-title"><h1>Create an Account <br/>Sign Up</h1> </DialogTitle>
+          <DialogTitle id="form-dialog-title"><h1>Create an Account</h1> </DialogTitle>
           <DialogContentText>
-          <h3>Already have an account? <a href="">Click here to Log In.</a></h3>
+       
           </DialogContentText>
           <hr/>
 
@@ -93,6 +102,7 @@ return (
           />
           <hr/>
 
+        <h3>Already have an account? <a href="">Click here to Log In.</a></h3>
         </DialogContent>
         <hr/>
       <hr/>
@@ -106,7 +116,7 @@ return (
           <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
            {'<<<< ❌ Sign up Later'}
           </button>
-          <button style={{backgroundColor: 'gold',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
+          <button style={{backgroundColor: 'gold',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={createAccountSubmitButton} >
             Create Account ➕
           </button>
         </DialogActions>

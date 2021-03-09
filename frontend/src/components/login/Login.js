@@ -102,7 +102,7 @@ return (
             onChange={e => setUserName(e.target.value)}
           />
 
-          <hr/>
+          {/* <hr/> */}
           <TextField
             variant='outlined'
             margin="dense"
@@ -112,7 +112,7 @@ return (
             fullWidth
             onChange={e => setEmail(e.target.value)}
           />
-          <hr/>
+          {/* <hr/> */}
           <TextField
             variant='outlined'
             margin="dense"

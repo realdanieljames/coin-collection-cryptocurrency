@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./coinGeckoData.css";
 import Search from '../search/Search'
+
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 
@@ -65,8 +66,9 @@ const CoinGeckoApi = ({coinResults, loading, setCoinResults, searchValue,setSear
                     key={coinInfo.id} 
                     className="coin__card"        
                     >
-                        {/* <div className="favorite__icon"> {FavoriteBorderIcon}</div> */}
-                        <div className="card__rank">{"_"}Rank: #{coinInfo.market_data.market_cap_rank} {<br/>} <strong> ( {coinInfo.symbol.toUpperCase()} )</strong> </div>
+                        <div className="favorite__icon"> {<FavoriteBorderIcon/>}</div>
+                        {/* {<FavoriteBorderIcon/>} */}
+                        <div className="card__rank"> Rank: {coinInfo.market_data.market_cap_rank} {<br/>} <strong> ( {coinInfo.symbol.toUpperCase()} )</strong> </div>
                         <div className="card__marketcap"> MCap: {coinInfo.market_data.market_cap.usd.toLocaleString("en-US",currencyObj)}</div>
                         <div className="card__circulating__supply">Circulating Supply:{<br/>} {Number(coinInfo.market_data.circulating_supply).toLocaleString("en-US")} <strong> {coinInfo.symbol.toUpperCase()}</strong></div>
                         
