@@ -78,7 +78,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 return (
     <div>
 
-    <span className="login__button" onClick={handleClickOpen}>Sign In</span>
+    <span className="login__button" onClick={handleClickOpen}>Login</span>
  
       <Dialog open={open} onClose={handleClose}  aria-labelledby="form-dialog-title"
        fullWidth={true} maxWidth='xs'

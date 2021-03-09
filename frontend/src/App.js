@@ -22,7 +22,7 @@ function App() {
   const [coinResults, setCoinResults] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-  const [coinsPerPage, setCoinsPerPage] = useState(100);
+  const [coinsPerPage, setCoinsPerPage] = useState(50);
   const [allCoinINS, setAllCoinINS] = useState([]);
   const [currencyType, setCurrencyType] = useState("usd");
   const [searchedCoins, setSearchedCoins] = useState([]);
