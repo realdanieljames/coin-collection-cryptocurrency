@@ -101,7 +101,7 @@ const symbolData = []
       <input 
           className="search__input"
           type="text"
-          placeholder=" Search Cryptocurrencies"
+          placeholder=" Search"
           value={searchValue}
           onChange={(e)=> handleSearchInput(e.target.value)}
           />

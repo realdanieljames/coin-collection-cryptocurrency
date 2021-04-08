@@ -3,10 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import CoinGeckoApi from "./components/coinGeckoAPI/coinGeckoData";
 import Navbar from "./components/navbar/Navbar";
-import Search from "./components/search/Search";
+
 import Pagination from "./components/pagination/Pagination";
-import Signup from "./components/signup/Signup";
-import Login from "./components/login/Login";
+
 import MyCollection from "./components/myCollection/MyCollection";
 import MyWatchlist from "./components/myWatchlist/MyWatchlist";
 import Shop from "./components/shop/Shop";
